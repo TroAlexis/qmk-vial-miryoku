@@ -17,7 +17,7 @@ SPACE_CADET_ENABLE = no
 
 # RGB Matrix enabled
 RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_DRIVER = IS31FL3733
 
 # Encoder enabled
 ENCODER_ENABLE = yes
+ENCODER_MAP_ENABLE = yes

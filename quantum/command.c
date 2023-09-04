@@ -19,7 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "wait.h"
 #include "keycode.h"
 #include "host.h"
-#include "keymap.h"
 #include "print.h"
 #include "debug.h"
 #include "util.h"
@@ -46,6 +45,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef AUDIO_ENABLE
 #    include "audio.h"
 #endif /* AUDIO_ENABLE */
+
+#ifdef VIAL_ENABLE
+#    include "vial.h"
+#endif
 
 static bool command_common(uint8_t code);
 static void command_common_help(void);
@@ -385,6 +388,9 @@ static bool command_common(uint8_t code) {
         case MAGIC_KC(MAGIC_KEY_BOOTLOADER):
         case MAGIC_KC(MAGIC_KEY_BOOTLOADER_ALT):
             print("\n\nJumping to bootloader... ");
+#ifdef VIAL_ENABLE
+            if (vial_unlocked)
+#endif
             reset_keyboard();
             break;
 
